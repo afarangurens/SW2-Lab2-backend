@@ -1,0 +1,336 @@
+{
+	"info": {
+		"_postman_id": "9db3a647-6378-498f-9e95-7714cd61bbe9",
+		"name": "Labs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5631151"
+	},
+	"item": [
+		{
+			"name": "RoleController",
+			"item": [
+				{
+					"name": "Get all roles",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/roles",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get courses",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "secret",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "soft-eng-ii",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8087/mis-cursos?access_token=4e97d095-a6c9-4d5a-ac0b-dbdaa2852eeb",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"mis-cursos"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "4e97d095-a6c9-4d5a-ac0b-dbdaa2852eeb"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user roles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8087/mis-roles?acces_token=912df1a5-373d-4a0c-b06f-8ba68cf97f85",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"mis-roles"
+							],
+							"query": [
+								{
+									"key": "acces_token",
+									"value": "912df1a5-373d-4a0c-b06f-8ba68cf97f85"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Course",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "secret",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "soft-eng-ii",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"courseName\": \"Lenguajes de Programación\",\r\n    \"durationHours\": 123\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8087/profesor/crear-curso?access_token=01d0dd15-a4eb-4ee3-91e2-809f8ba79d96",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"profesor",
+								"crear-curso"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "01d0dd15-a4eb-4ee3-91e2-809f8ba79d96"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UserController",
+			"item": [
+				{
+					"name": "Register student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"names\": \"Usuario Estudiante\",\n\t\"surnames\": \"Prueba Temporal\",\n\t\"username\": \"student\",\n\t\"password\": \"12345678\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/registro/nuevo-usuario/rol/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"registro",
+								"nuevo-usuario",
+								"rol",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register teacher",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"names\": \"Usuario Profesor\",\n\t\"surnames\": \"Prueba Temporal\",\n\t\"username\": \"teacher\",\n\t\"password\": \"87654321\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/registro/nuevo-usuario/rol/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"registro",
+								"nuevo-usuario",
+								"rol",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Associate role for existing user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "access-token",
+								"value": "de82d95f-2d93-45a4-8bbe-6dff7f25a4dd",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"password\": \"12345678\"\n}\n\n\n\n\n"
+						},
+						"url": {
+							"raw": "localhost:8080/registro/nuevo-rol/1?access_token=",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"registro",
+								"nuevo-rol",
+								"1"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authentication",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "secret",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "soft-eng-ii",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "teacher",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "87654321",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/oauth/token",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
